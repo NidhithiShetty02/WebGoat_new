@@ -58,3 +58,6 @@ jobs:
                     push: false
                     build-args: |
                         webgoat_version=${{ env.WEBGOAT_MAVEN_VERSION }} 
+            - name: Fortify AST Scan
+              uses: fortify/github-action@v1.0.0
+            
