@@ -77,7 +77,7 @@ jobs:
           FOD_TENANT: DXC_Demo
           FOD_USER: nidhithi_Demo
           FOD_PAT: VDlqPHF5YmNbYkZIS3E0Z0E1alEnSzBXU1kxRlZm0
-          FOD_RELEASE_ID: 1003135
+          FOD_RELEASE_ID: 1090173
           FOD_UPLOADER_OPTS: "-ep 2 -pp 0 -I 1 -apf"
           FOD_UPLOADER_NOTES: 'Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
 
@@ -89,7 +89,7 @@ jobs:
           fod_tenant: DXC_Demo
           fod_user: nidhithi_Demo
           fod_password: VDlqPHF5YmNbYkZIS3E0Z0E1alEnSzBXU1kxRlZm0
-          fod_release_id: 1003135
+          fod_release_id: 1090173
 
       # Import Fortify on Demand results to GitHub Security Code Scanning
       - name: Import Results
