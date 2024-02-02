@@ -78,7 +78,7 @@ jobs:
           FOD_USER: nidhithi_Demo
           FOD_PAT: VDlqPHF5YmNbYkZIS3E0Z0E1alEnSzBXU1kxRlZm0
           FOD_RELEASE_ID: 1090173
-          FOD_UPLOADER_OPTS: "-ep 2 -pp 0 -I 1 -apf"
+          FOD_UPLOADER_OPTS: -ep 2 -pp 0 -I 1 -apf
           FOD_UPLOADER_NOTES: 'Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
 
       # Once scan completes, pull SAST issues from Fortify on Demand and generate SARIF output.
