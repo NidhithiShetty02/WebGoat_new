@@ -61,7 +61,7 @@ jobs:
       - name: Package Code + Dependencies
         run: scancentral package $PACKAGE_OPTS -o package.zip
         env:
-          PACKAGE_OPTS: "-bt mvn"
+          PACKAGE_OPTS: "-bt none"
 
       # Start Fortify on Demand SAST scan and wait until results complete. For more information on FoDUploader commands, see https://github.com/fod-dev/fod-uploader-java
       # TODO: Update ENV variables for your application and create the necessary GitHub Secrets.  Helpful hints:
@@ -74,10 +74,10 @@ jobs:
         env:
           FOD_URL: "https://ams.fortify.com/"
           FOD_API_URL: "https://api.ams.fortify.com/"
-          FOD_TENANT: ${{ secrets.FOD_TENANT }}
-          FOD_USER: ${{ secrets.FOD_USER }}
-          FOD_PAT: ${{ secrets.FOD_PAT }}
-          FOD_RELEASE_ID: ${{ secrets.FOD_RELEASE_ID }}
+          FOD_TENANT: DXC_Demo
+          FOD_USER: nidhithi_Demo
+          FOD_PAT: dk5WWj5ZNDJUT1U1ZUNOMkc4a0koempXVkYubmNV0
+          FOD_RELEASE_ID: 1090173
           FOD_UPLOADER_OPTS: "-ep 2 -pp 0 -I 1 -apf"
           FOD_UPLOADER_NOTES: 'Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
 
@@ -86,10 +86,10 @@ jobs:
         uses: fortify/gha-export-vulnerabilities@fcb374411cff9809028c911dabb8b57dbdae623b
         with:
           fod_base_url: "https://ams.fortify.com/"
-          fod_tenant: ${{ secrets.FOD_TENANT }}
-          fod_user: ${{ secrets.FOD_USER }}
-          fod_password: ${{ secrets.FOD_PAT }}
-          fod_release_id: ${{ secrets.FOD_RELEASE_ID }}
+          fod_tenant: DXC_Dem0
+          fod_user: nidhithi_Demo
+          fod_password: Nidhithidemo@123
+          fod_release_id: 1090173
         Detect-Errors:
          runs-on: ubuntu-latest
     strategy:
