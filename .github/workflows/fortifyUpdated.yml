@@ -103,9 +103,9 @@ jobs:
          done
 
          echo ""
-        echo "Error Count: $errorCount"
-        echo "Warning Count: $warningCount"
-        echo "Note Count: $noteCount"
+         echo "Error Count: $errorCount"
+         echo "Warning Count: $warningCount"
+         echo "Note Count: $noteCount"
          echo ""
 
          if (( $errorCount > 0 )); then
