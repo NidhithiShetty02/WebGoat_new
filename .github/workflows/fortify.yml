@@ -89,16 +89,17 @@ jobs:
         language: [ 'csharp', 'javascript' ]
     needs:
       - analyze
-        steps:
+    steps:
     - name: Download Sarif Report
       uses: actions/download-artifact@v2
       with:
         name: sarif-report
+
     - name: Detect Errors
       run: |
         repo=$(echo ${{ github.repository }} | awk -F'/' '{print $2}')
         results=$(cat $repo/results/${{ matrix.language }}-builtin.sarif | jq -r '.runs[].results[].ruleId')
-
+ 
         resultsArray=($results)
         
         echo "${resultsArray[*]}"
