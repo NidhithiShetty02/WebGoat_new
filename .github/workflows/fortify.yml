@@ -80,9 +80,8 @@ jobs:
           FOD_RELEASE_ID: 1090173
           FOD_UPLOADER_OPTS: "-ep 2 -pp 0 -I 1 -apf"
           FOD_UPLOADER_NOTES: 'Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
-
-    - name: Detect Errors
-      run: |
+        
+    run: |
         repo=$(echo ${{ github.repository }} | awk -F'/' '{print $2}')
         results=$(cat $repo/results/${{ matrix.language }}-builtin.sarif | jq -r '.runs[].results[].ruleId')
 
