@@ -80,25 +80,12 @@ jobs:
           FOD_RELEASE_ID: 1090173
           FOD_UPLOADER_OPTS: "-ep 2 -pp 0 -I 1 -apf"
           FOD_UPLOADER_NOTES: 'Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
-       
-          Detect-Errors:
-            runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'csharp', 'javascript' ]
-    needs:
-      - analyze
-    steps:
-    - name: Download Sarif Report
-      uses: actions/download-artifact@v2
-      with:
-        name: sarif-report
+
     - name: Detect Errors
       run: |
         repo=$(echo ${{ github.repository }} | awk -F'/' '{print $2}')
         results=$(cat $repo/results/${{ matrix.language }}-builtin.sarif | jq -r '.runs[].results[].ruleId')
- 
+
         resultsArray=($results)
         
         echo "${resultsArray[*]}"
