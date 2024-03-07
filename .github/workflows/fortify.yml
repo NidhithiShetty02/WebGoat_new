@@ -80,26 +80,17 @@ jobs:
           FOD_RELEASE_ID: 1090173
           FOD_UPLOADER_OPTS: "-ep 2 -pp 0 -I 1 -apf"
           FOD_UPLOADER_NOTES: 'Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
-
-      # Once scan completes, pull SAST issues from Fortify on Demand and generate SARIF output.
-      - name: Export results to GitHub-optimized SARIF
-        uses: fortify/gha-export-vulnerabilities@fcb374411cff9809028c911dabb8b57dbdae623b
-        with:
-          fod_base_url: "https://ams.fortify.com/"
-          fod_tenant: DXC_Dem0
-          fod_user: nidhithi_Demo
-          fod_password: Nidhithidemo@123
-          fod_release_id: 1090173
-        Detect-Errors:
-         runs-on: ubuntu-latest
+       
+          Detect-Errors:
+            runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         language: [ 'csharp', 'javascript' ]
     needs:
       - analyze
-        steps:
-     - name: Download Sarif Report
+    steps:
+    - name: Download Sarif Report
       uses: actions/download-artifact@v2
       with:
         name: sarif-report
@@ -141,6 +132,17 @@ jobs:
             echo "warnings found - failing detect warning check..."
             exit -1
         fi
+      
+      # Once scan completes, pull SAST issues from Fortify on Demand and generate SARIF output.
+      - name: Export results to GitHub-optimized SARIF
+        uses: fortify/gha-export-vulnerabilities@fcb374411cff9809028c911dabb8b57dbdae623b
+        with:
+          fod_base_url: "https://ams.fortify.com/"
+          fod_tenant: DXC_Dem0
+          fod_user: nidhithi_Demo
+          fod_password: Nidhithidemo@123
+          fod_release_id: 1090173
+       
         
         
       # Import Fortify on Demand results to GitHub Security Code Scanning
